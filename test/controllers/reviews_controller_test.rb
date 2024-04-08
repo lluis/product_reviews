@@ -3,46 +3,47 @@ require "test_helper"
 class ReviewsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @review = reviews(:one)
+    @product = @review.product
   end
 
   test "should get index" do
-    get reviews_url
+    get product_reviews_url(@product)
     assert_response :success
   end
 
   test "should get new" do
-    get new_review_url
+    get new_product_review_url(@product)
     assert_response :success
   end
 
   test "should create review" do
     assert_difference("Review.count") do
-      post reviews_url, params: { review: { author: @review.author, product_id: @review.product_id, rating: @review.rating, text: @review.text } }
+      post product_reviews_url(@product), params: { review: { author: @review.author, product_id: @review.product_id, rating: @review.rating, text: @review.text } }
     end
 
-    assert_redirected_to review_url(Review.last)
+    assert_redirected_to product_review_url(@product, Review.last)
   end
 
   test "should show review" do
-    get review_url(@review)
+    get product_review_url(@product, @review)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_review_url(@review)
+    get edit_product_review_url(@product, @review)
     assert_response :success
   end
 
   test "should update review" do
-    patch review_url(@review), params: { review: { author: @review.author, product_id: @review.product_id, rating: @review.rating, text: @review.text } }
-    assert_redirected_to review_url(@review)
+    patch product_review_url(@product, @review), params: { review: { author: @review.author, product_id: @review.product_id, rating: @review.rating, text: @review.text } }
+    assert_redirected_to product_review_url(@product, @review)
   end
 
   test "should destroy review" do
     assert_difference("Review.count", -1) do
-      delete review_url(@review)
+      delete product_review_url(@product, @review)
     end
 
-    assert_redirected_to reviews_url
+    assert_redirected_to product_reviews_url(@product)
   end
 end
