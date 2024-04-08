@@ -70,3 +70,5 @@ group :test do
 end
 
 gem "faker", "~> 3.3"
+
+gem "font-awesome-sass", "~> 6.5"

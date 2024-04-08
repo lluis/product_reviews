@@ -3,9 +3,9 @@
 one:
   name: MyString
   description: MyString
-  image_url: MyString
+  image_url: ''
 
 two:
   name: MyString
   description: MyString
-  image_url: MyString
+  image_url: ''
