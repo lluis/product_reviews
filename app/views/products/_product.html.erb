@@ -19,9 +19,8 @@
     (<%= pluralize product.reviews.count, 'review' %>)
   </p>
 
-  <% if action_name != "show" %>
+  <% if action_name != "show" && action_name.present? %>
     <%= link_to "Show this product", product, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this product", edit_product_path(product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>
