@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
-  belongs_to :product
+  belongs_to :product, touch: true
+  broadcasts_to :product
 
   validates :author, presence: true
   validates :rating, presence: true,
